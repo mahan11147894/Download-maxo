@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>𝐅𝐫𝐞𝐞 𝐋𝐨𝐠𝐢𝐧 𝐛𝐲 𝐌𝐚𝐱𝐨</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+:root{
+    --bg:#050505;
+    --card:#0b0b0b;
+    --border:#202020;
+    --text:#fff;
+    --muted:#777;
+    --soft:#111;
+}
+
+body{
+    min-height:100vh;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 50% -10%,#303030 0%,#0b0b0b 30%,#050505 65%);
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+.grid{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.3;
+    background-image:
+        linear-gradient(#fff 1px,transparent 1px),
+        linear-gradient(90deg,#fff 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* CONTAINER */
+
+.container{
+    width:min(1050px,92%);
+    margin:auto;
+    padding:55px 0 40px;
+    position:relative;
+    z-index:2;
+}
+
+/* TOP */
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:80px;
+}
+
+.brand{
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.status{
+    border:1px solid #292929;
+    background:#0b0b0b;
+    border-radius:50px;
+    padding:9px 15px;
+    color:#aaa;
+    font-size:11px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.status i{
+    width:7px;
+    height:7px;
+    background:#fff;
+    border-radius:50%;
+    box-shadow:0 0 12px #fff;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    max-width:850px;
+    margin:auto;
+}
+
+.tag{
+    display:inline-block;
+    border:1px solid #282828;
+    background:#0d0d0d;
+    color:#aaa;
+    padding:9px 16px;
+    border-radius:50px;
+    font-size:11px;
+    margin-bottom:25px;
+    letter-spacing:1px;
+}
+
+h1{
+    font-size:clamp(42px,8vw,82px);
+    line-height:1;
+    letter-spacing:-3px;
+    font-weight:1000;
+    margin-bottom:24px;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#777;
+    line-height:2;
+    font-size:14px;
+}
+
+/* DOWNLOAD CARD */
+
+.download-card{
+    margin:55px auto 0;
+    max-width:780px;
+    background:
+        linear-gradient(145deg,#111,#080808);
+    border:1px solid #242424;
+    border-radius:30px;
+    padding:25px;
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.65),
+        inset 0 1px rgba(255,255,255,.04);
+}
+
+.file{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:10px;
+}
+
+.file-icon{
+    min-width:70px;
+    height:70px;
+    border-radius:20px;
+    background:#fff;
+    color:#050505;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    font-weight:1000;
+}
+
+.file-info{
+    text-align:right;
+    flex:1;
+}
+
+.file-name{
+    font-size:18px;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+.file-meta{
+    display:flex;
+    gap:15px;
+    color:#666;
+    font-size:11px;
+}
+
+.download-btn{
+    margin-top:20px;
+    width:100%;
+    min-height:62px;
+    border-radius:18px;
+    background:#fff;
+    color:#050505;
+    text-decoration:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    font-size:16px;
+    font-weight:1000;
+    transition:.25s;
+}
+
+.download-btn:hover{
+    transform:translateY(-3px);
+    background:#e8e8e8;
+    box-shadow:0 15px 45px rgba(255,255,255,.1);
+}
+
+.download-btn svg{
+    width:21px;
+}
+
+/* CONTENT */
+
+.section-title{
+    text-align:center;
+    margin:100px 0 35px;
+}
+
+.section-title span{
+    color:#666;
+    font-size:11px;
+    letter-spacing:3px;
+}
+
+.section-title h2{
+    font-size:30px;
+    margin-top:10px;
+}
+
+/* FEATURES */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.feature{
+    background:#0b0b0b;
+    border:1px solid #1d1d1d;
+    border-radius:22px;
+    padding:28px;
+    min-height:190px;
+    transition:.25s;
+}
+
+.feature:hover{
+    border-color:#444;
+    transform:translateY(-5px);
+}
+
+.icon{
+    width:45px;
+    height:45px;
+    border-radius:14px;
+    background:#fff;
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:1000;
+    margin-bottom:25px;
+}
+
+.feature h3{
+    font-size:16px;
+    margin-bottom:12px;
+}
+
+.feature p{
+    color:#666;
+    font-size:12px;
+    line-height:2;
+}
+
+/* PACKAGE */
+
+.package{
+    border:1px solid #1d1d1d;
+    background:#090909;
+    border-radius:25px;
+    overflow:hidden;
+}
+
+.package-item{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:22px;
+    border-bottom:1px solid #171717;
+}
+
+.package-item:last-child{
+    border-bottom:0;
+}
+
+.package-number{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:#151515;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#aaa;
+    font-size:12px;
+}
+
+.package-info{
+    flex:1;
+}
+
+.package-info b{
+    display:block;
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.package-info span{
+    color:#666;
+    font-size:11px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    color:#444;
+    font-size:11px;
+    margin-top:80px;
+    padding-top:25px;
+    border-top:1px solid #141414;
+}
+
+footer strong{
+    color:#888;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .container{
+        padding-top:30px;
+    }
+
+    .top{
+        margin-bottom:55px;
+    }
+
+    h1{
+        font-size:45px;
+        letter-spacing:-2px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .file{
+        align-items:flex-start;
+    }
+
+    .file-icon{
+        min-width:58px;
+        height:58px;
+        border-radius:16px;
+    }
+
+    .file-name{
+        font-size:15px;
+        line-height:1.6;
+    }
+
+    .file-meta{
+        flex-wrap:wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+<div class="noise"></div>
+
+<div class="container">
+
+    <!-- TOP -->
+
+    <div class="top">
+
+        <div class="brand">
+            MAXO
+        </div>
+
+        <div class="status">
+            <i></i>
+            DOWNLOAD ONLINE
+        </div>
+
+    </div>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="tag">
+            FREE RELEASE • MAXO
+        </div>
+
+        <h1>
+            𝐅𝐫𝐞𝐞 𝐋𝐨𝐠𝐢𝐧<br>
+            𝐛𝐲 𝐌𝐚𝐱𝐨
+        </h1>
+
+        <p>
+            پکیج کامل و آماده استفاده MAXO.
+            همه چیز در یک فایل، با طراحی تمیز،
+            ساختار حرفه‌ای و آموزش کامل.
+        </p>
+
+    </section>
+
+
+    <!-- DOWNLOAD -->
+
+    <div class="download-card">
+
+        <div class="file">
+
+            <div class="file-icon">
+                ZIP
+            </div>
+
+            <div class="file-info">
+
+                <div class="file-name">
+                    𝐅𝐫𝐞𝐞 𝐋𝐨𝐠𝐢𝐧 𝐛𝐲 𝐌𝐚𝐱𝐨
+                </div>
+
+                <div class="file-meta">
+                    <span>100 MB</span>
+                    <span>ZIP Archive</span>
+                    <span>MAXO</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <a
+            class="download-btn"
+            href="https://cdn.imgurl.ir/uploads/c995022____.zip"
+            download
+        >
+
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2.5"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+
+                <path d="M12 3v12"/>
+                <path d="m7 10 5 5 5-5"/>
+                <path d="M5 21h14"/>
+
+            </svg>
+
+            دانلود فایل
+        </a>
+
+    </div>
+
+
+    <!-- INCLUDED -->
+
+    <div class="section-title">
+
+        <span>PACKAGE CONTENT</span>
+
+        <h2>
+            داخل این پکیج چیست؟
+        </h2>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="icon">
+                01
+            </div>
+
+            <h3>
+                Login Block
+            </h3>
+
+            <p>
+                بلاک لاگین آماده برای استفاده
+                و اتصال به پروژه MAXO.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="icon">
+                02
+            </div>
+
+            <h3>
+                Admin Panel
+            </h3>
+
+            <p>
+                سایت مدیریت و ادمین پنل
+                برای مدیریت سیستم لاگین.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="icon">
+                03
+            </div>
+
+            <h3>
+                Tutorial
+            </h3>
+
+            <p>
+                ویدیو آموزش نصب و استفاده
+                از پکیج به صورت مرحله‌به‌مرحله.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- PACKAGE DETAILS -->
+
+    <div class="section-title">
+
+        <span>WHAT YOU GET</span>
+
+        <h2>
+            محتویات فایل
+        </h2>
+
+    </div>
+
+
+    <div class="package">
+
+        <div class="package-item">
+
+            <div class="package-number">
+                01
+            </div>
+
+            <div class="package-info">
+
+                <b>
+                    Login Block
+                </b>
+
+                <span>
+                    فایل‌های مورد نیاز بلاک لاگین
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="package-item">
+
+            <div class="package-number">
+                02
+            </div>
+
+            <div class="package-info">
+
+                <b>
+                    Admin Panel
+                </b>
+
+                <span>
+                    پنل مدیریت و فایل‌های سایت ادمین
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="package-item">
+
+            <div class="package-number">
+                03
+            </div>
+
+            <div class="package-info">
+
+                <b>
+                    Tutorial Video
+                </b>
+
+                <span>
+                    ویدیوی آموزش کامل استفاده
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+        © 2026 <strong>MAXO</strong> — Free Login Release
+    </footer>
+
+</div>
+
+</body>
+  </html>
